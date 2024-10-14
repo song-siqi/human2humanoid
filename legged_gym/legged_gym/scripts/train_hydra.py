@@ -47,7 +47,7 @@ def train(cfg_hydra: DictConfig) -> None:
         json.dump(train_cfg_dict, f, indent=4)
     if cfg_hydra.use_wandb:
         run_id = wandb.util.generate_id()
-        run = wandb.init(name=cfg_hydra.task, config=cfg_hydra, id=run_id, dir=log_dir, sync_tensorboard=True)
+        run = wandb.init(name=cfg_hydra.task, config=cfg_hydra, id=run_id, dir=log_dir, sync_tensorboard=True, project="omni_h1_2")
         wandb.run.name = cfg_hydra.run_name
     
     ppo_runner.learn(num_learning_iterations=train_cfg.runner.max_iterations, init_at_random_ep_len=False)

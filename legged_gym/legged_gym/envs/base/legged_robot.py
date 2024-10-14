@@ -3187,7 +3187,6 @@ class LeggedRobot(BaseTask):
     
     def _get_state_from_motionlib_cache_trimesh(self, motion_ids, motion_times, offset=None):
         ## Cache the motion + offset
-        # import ipdb; ipdb.set_trace()
         if offset is None  or not "motion_ids" in self.ref_motion_cache or self.ref_motion_cache['offset'] is None or len(self.ref_motion_cache['motion_ids']) != len(motion_ids) or len(self.ref_motion_cache['offset']) != len(offset) \
             or  (self.ref_motion_cache['motion_ids'] - motion_ids).abs().sum() + (self.ref_motion_cache['motion_times'] - motion_times).abs().sum() + (self.ref_motion_cache['offset'] - offset).abs().sum() > 0 :
             self.ref_motion_cache['motion_ids'] = motion_ids.clone()  # need to clone; otherwise will be overriden
@@ -3197,7 +3196,6 @@ class LeggedRobot(BaseTask):
             return self.ref_motion_cache
         motion_res = self._motion_lib.get_motion_state(motion_ids, motion_times, offset=offset)
 
-        # import ipdb; ipdb.set_trace()
         # self.root_states[:,:2] = motion_res['root_pos'][:, :2]
         if self.cfg.terrain.measure_heights:
             self.measured_heights = self._get_heights(position=motion_res['root_pos'][:, :3]).flatten()

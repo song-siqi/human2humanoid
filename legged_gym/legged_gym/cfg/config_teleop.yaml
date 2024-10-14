@@ -23,8 +23,8 @@ headless: True
 seed: 1
 no_log: False
 test: False 
-sim_device: "cuda:0"
-rl_device: "cuda:0"
+sim_device: "cuda:8"
+rl_device: "cuda:8"
 sim_device_id: 0
 metadata: false
 play: ${test}
